@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task & Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">✓</span><div><b>TrackMate</b><small>PERSONAL ORGANIZER</small></div></div>
+    <nav>
+      <button class="nav-item active" data-view="dashboard">▦ <span>Dashboard</span></button>
+      <button class="nav-item" data-view="tasks">☑ <span>My Tasks</span></button>
+      <button class="nav-item" data-view="expenses">₹ <span>Expenses</span></button>
+    </nav>
+    <div class="sidebar-note"><b>Stay on track!</b><p>Small steps every day lead to big results.</p></div>
+    <div class="profile"><div class="avatar">U</div><div><b>My Workspace</b><small>Personal account</small></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow">PERSONAL WORKSPACE</p><h1 id="page-title">Dashboard</h1></div><div class="today" id="today"></div></header>
+
+    <section id="dashboard-view" class="view">
+      <div class="welcome"><div><p class="eyebrow light">YOUR DAILY OVERVIEW</p><h2>Make today count.</h2><p>Manage your tasks and keep your spending under control.</p></div><div class="welcome-mark">✦</div></div>
+      <div class="stats">
+        <article class="stat-card"><div class="stat-top"><span>Total Tasks</span><span class="stat-icon purple">☑</span></div><strong id="total-tasks">0</strong><small>All tasks added</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Completed</span><span class="stat-icon green">✓</span></div><strong id="completed-tasks">0</strong><small>Tasks finished</small></article>
+        <article class="stat-card"><div class="stat-top"><span>This Month's Expense</span><span class="stat-icon orange">₹</span></div><strong id="month-expense">₹0</strong><small>Money spent this month</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Total Expenses</span><span class="stat-icon blue">↗</span></div><strong id="total-expense">₹0</strong><small>All recorded spending</small></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="panel"><div class="panel-heading"><div><h3>Recent Tasks</h3><p>Your latest activities</p></div><button class="text-button" data-go="tasks">View all →</button></div><div id="recent-tasks" class="empty">No tasks yet. Add your first task!</div></article>
+        <article class="panel"><div class="panel-heading"><div><h3>Expense Breakdown</h3><p>Spending by category</p></div><button class="text-button" data-go="expenses">View all →</button></div><div id="expense-breakdown" class="breakdown empty">No expenses recorded yet.</div></article>
+      </div>
+    </section>
+
+    <section id="tasks-view" class="view hidden">
+      <div class="section-intro"><div><h2>My Tasks</h2><p>Plan your work and mark it complete when you're done.</p></div></div>
+      <form id="task-form" class="form-card">
+        <div class="form-title">＋ Add a New Task</div>
+        <div class="form-grid">
+          <label class="wide">Task title<input id="task-title" required maxlength="80" placeholder="e.g. Complete project report" /></label>
+          <label>Due date<input id="task-date" type="date" /></label>
+          <label>Priority<select id="task-priority"><option>Medium</option><option>High</option><option>Low</option></select></label>
+        </div>
+        <button class="primary" type="submit">Add Task</button>
+      </form>
+      <div class="list-toolbar"><h3>Task List</h3><select id="task-filter"><option value="all">All tasks</option><option value="pending">Pending</option><option value="completed">Completed</option></select></div>
+      <div id="task-list" class="item-list"></div>
+    </section>
+
+    <section id="expenses-view" class="view hidden">
+      <div class="section-intro"><div><h2>Expenses</h2><p>Record your spending and understand where your money goes.</p></div></div>
+      <form id="expense-form" class="form-card">
+        <div class="form-title">＋ Add an Expense</div>
+        <div class="form-grid">
+          <label>Description<input id="expense-title" required maxlength="80" placeholder="e.g. Lunch, bus fare" /></label>
+          <label>Amount (₹)<input id="expense-amount" type="number" min="0.01" step="0.01" required placeholder="e.g. 250" /></label>
+          <label>Category<select id="expense-category"><option>Food</option><option>Travel</option><option>Shopping</option><option>Education</option><option>Bills</option><option>Other</option></select></label>
+          <label>Date<input id="expense-date" type="date" required /></label>
+        </div>
+        <button class="primary" type="submit">Save Expense</button>
+      </form>
+      <div class="list-toolbar"><h3>Expense History</h3><strong id="expense-total-label">Total: ₹0</strong></div>
+      <div id="expense-list" class="item-list"></div>
+    </section>
+    <footer>TrackMate · Task & Expense Tracker · Your data is saved in this browser.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
